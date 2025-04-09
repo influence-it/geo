@@ -1,0 +1,49 @@
+{
+  "name": "influence-it/geo",
+  "type": "package",
+  "description": "The influence-it geo package provides a set of tools for managing geographical data and operations.",
+  "keywords": [
+    "influence-it",
+    "php",
+    "geo"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^8.4",
+    "influence-it/core": "<1.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Influence\\Geo\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+      ]
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/influence-it/core"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "mockery/mockery": "^1.6",
+    "orchestra/testbench": "^9.3",
+    "phpunit/phpunit": "^11.3"
+  }
+}
