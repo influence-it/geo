@@ -7,6 +7,6 @@ namespace Influence\Geo\Domain\City;
 interface CityRepository
 {
 
-    public function getByStateId(): CityCollection;
+    public function getByStateId(int $id): CityCollection;
 
 }

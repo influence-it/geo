@@ -3,20 +3,25 @@
 namespace Tests;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Influence\Geo\Infra\Eloquent\GeoSeeder;
 use Orchestra\Testbench\TestCase;
 
 class FeatureTestCase extends TestCase
 {
     use InteractsWithDatabase;
-    use RefreshDatabase;
+
+    protected static bool $seeded = false;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->seed(GeoSeeder::class);
+
         $this->loadMigrationsFrom(__DIR__ . '/../vendor/influence-it/Core/src/Stubs/Database/Migrations');
+
+        if (!static::$seeded) {
+            $this->seed(GeoSeeder::class);
+            static::$seeded = true;
+        }
     }
 
     protected function getEnvironmentSetUp($app): void

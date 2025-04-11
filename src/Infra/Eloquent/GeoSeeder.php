@@ -9,26 +9,25 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-class GeoSeeder extends Seeder {
+class GeoSeeder extends Seeder
+{
     public function run(): void
     {
+        if (Schema::hasTable('states') || Schema::hasTable('cities')) {
+            return;
+        }
+
         $path = __DIR__ . '/../../../.files/base.sql';
 
-        if (!Schema::hasTable('states') || !Schema::hasTable('cities')) {
-            DB::unprepared(file_get_contents($path));
-        }
+        DB::unprepared(file_get_contents($path));
 
-        if (!Schema::hasColumn('states', 'uuid')) {
-            Schema::table('states', function ($table) {
-                $table->uuid('uuid')->nullable()->after('id');
-            });
-        }
+        Schema::table('states', function ($table) {
+            $table->uuid('uuid')->nullable()->after('id');
+        });
 
-        if (!Schema::hasColumn('cities', 'uuid')) {
-            Schema::table('cities', function ($table) {
-                $table->uuid('uuid')->nullable()->after('id');
-            });
-        }
+        Schema::table('cities', function ($table) {
+            $table->uuid('uuid')->nullable()->after('id');
+        });
 
         DB::table('states')->whereNull('uuid')->get()->each(function ($state) {
             DB::table('states')
@@ -50,4 +49,6 @@ class GeoSeeder extends Seeder {
             $table->uuid('uuid')->unique()->nullable(false)->change();
         });
     }
-};
+}
+
+;
