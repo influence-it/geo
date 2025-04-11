@@ -4,6 +4,7 @@ namespace Tests;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Influence\Geo\Infra\Eloquent\GeoSeeder;
 use Orchestra\Testbench\TestCase;
 
 class FeatureTestCase extends TestCase
@@ -14,8 +15,8 @@ class FeatureTestCase extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        $this->seed(GeoSeeder::class);
         $this->loadMigrationsFrom(__DIR__ . '/../vendor/influence-it/Core/src/Stubs/Database/Migrations');
-        $this->loadMigrationsFrom(__DIR__ . '/../src/Adapters/Database/Migrations');
     }
 
     protected function getEnvironmentSetUp($app): void
@@ -34,6 +35,8 @@ class FeatureTestCase extends TestCase
     protected function getPackageProviders($app): array
     {
         return [
+            \Influence\Core\Adapters\Laravel\ServiceProvider::class,
+            \Influence\Geo\ServiceProvider::class
         ];
     }
 
