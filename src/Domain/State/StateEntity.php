@@ -10,5 +10,7 @@ interface StateEntity
 
     public function getName(): string;
 
+    public function getUf(): string;
+
     public function getUuid(): string;
 }

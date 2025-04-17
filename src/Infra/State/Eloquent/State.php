@@ -9,18 +9,31 @@ use Influence\Geo\Domain\State\StateEntity;
 
 class State extends BaseModel implements StateEntity
 {
+
+    protected $fillable = [
+        'name',
+        'abbr',
+        'uuid',
+    ];
+
     public function getId(): int
     {
-        // TODO: Implement getId() method.
+        return $this->id;
     }
 
     public function getName(): string
     {
-        // TODO: Implement getName() method.
+        return $this->name;
     }
+
+    public function getUf(): string
+    {
+        return $this->abbr;
+    }
+
 
     public function getUuid(): string
     {
-        // TODO: Implement getUuid() method.
+        return $this->uuid;
     }
 }

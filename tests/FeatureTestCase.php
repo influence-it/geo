@@ -35,6 +35,8 @@ class FeatureTestCase extends TestCase
             'username' => 'qop',
             'password' => 'qop',
         ]);
+
+        require __DIR__ . '/../src/Infra/Shared/Http/routes.php';
     }
 
     protected function getPackageProviders($app): array
