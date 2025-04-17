@@ -11,17 +11,17 @@ class City extends BaseModel implements CityEntity
 {
     public function getId(): int
     {
-        // TODO: Implement getId() method.
+        return $this->id;
     }
 
     public function getName(): string
     {
-        // TODO: Implement getName() method.
+        return $this->name;
     }
 
     public function getUuid(): string
     {
-        // TODO: Implement getUuid() method.
+        return $this->uuid;
     }
 
 }

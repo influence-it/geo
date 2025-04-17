@@ -7,6 +7,8 @@ namespace Influence\Geo\Domain\State;
 interface StateRepository
 {
 
+    public function getByUuid(string $uuid): StateEntity;
+
     public function getAll(): StateCollection;
 
 }
