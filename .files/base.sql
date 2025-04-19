@@ -1,6 +1,6 @@
 CREATE TABLE states
 (
-    id         INT(10) UNSIGNED PRIMARY KEY NOT NULL,
+    id         BIGINT UNSIGNED PRIMARY KEY NOT NULL,
     name       VARCHAR(64)                  NOT NULL,
     abbr       VARCHAR(2)                   NOT NULL,
     created_at TIMESTAMP,
@@ -41,8 +41,8 @@ INSERT INTO states (id, name, abbr) VALUES (53, 'Distrito Federal', 'DF');
 
 CREATE TABLE cities
 (
-    id         INT(10) UNSIGNED PRIMARY KEY NOT NULL,
-    state_id   INT(10) UNSIGNED             NOT NULL,
+    id         BIGINT UNSIGNED PRIMARY KEY NOT NULL,
+    state_id   BIGINT UNSIGNED             NOT NULL,
     name       VARCHAR(64)                  NOT NULL,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
