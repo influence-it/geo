@@ -7,6 +7,10 @@ use Influence\Geo\Infra\City\Http\ListCityByStateUuidController;
 use Influence\Geo\Infra\State\Http\ListStateController;
 
 return[
-    Route::get('states', ListStateController::class),
-    Route::get('cities/{uuid}', ListCityByStateUuidController::class),
+
+    Route::prefix('states')
+        ->group(function () {
+            Route::get('/', ListStateController::class);
+            Route::get('/{uuid}/cities', ListCityByStateUuidController::class);
+        }),
 ];

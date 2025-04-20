@@ -29,7 +29,7 @@ class ListCityByStateUuidControllerTest extends FeatureTestCase
 
     private function iTryGetAllCities(): void
     {
-        $this->response = $this->getJson('cities/' . $this->state->uuid);
+        $this->response = $this->getJson('states/' . $this->state->uuid . '/cities');
     }
 
     private function iSeeAllCities(): void
