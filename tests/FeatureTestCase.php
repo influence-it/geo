@@ -10,13 +10,23 @@ class FeatureTestCase extends TestCase
 {
     use InteractsWithDatabase;
 
-    protected static bool $seeded = false;
+    protected static ?bool $seeded = null;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->loadMigrationsFrom(__DIR__ . '/../vendor/influence-it/Core/src/Stubs/Database/Migrations');
+
+        if (null === static::$seeded) {
+            if ($this->app['db']->getSchemaBuilder()->hasTable('cities')) {
+                $this->app['db']->getSchemaBuilder()->drop('cities');
+            }
+            if ($this->app['db']->getSchemaBuilder()->hasTable('states')) {
+                $this->app['db']->getSchemaBuilder()->drop('states');
+            }
+            static::$seeded = false;
+        }
 
         if (!static::$seeded) {
             $this->seed(GeoSeeder::class);
