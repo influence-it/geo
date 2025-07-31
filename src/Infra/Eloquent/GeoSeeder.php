@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use Influence\Geo\ServiceProvider;
 
 class GeoSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class GeoSeeder extends Seeder
             return;
         }
 
-        $path = __DIR__ . '/../../../.files/base.sql';
+        $path = ServiceProvider::GEO_SQL_BASE;
 
         DB::unprepared(file_get_contents($path));
 

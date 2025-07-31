@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Adapters\Database\Migrations;
+namespace Tests\Feature\Infra\Eloquent;
 
 use Tests\FeatureTestCase;
 
-class CreateStatesAndCityMigrationTest extends FeatureTestCase
+class GeoSeedTest extends FeatureTestCase
 {
-
     public function testShouldGetTotalRowsInTheTable()
     {
         $this->assertDatabaseCount('states', 27);
